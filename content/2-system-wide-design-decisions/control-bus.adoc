@@ -1,0 +1,15 @@
+=== Control Bus
+
+.IPE Statistics Structure
+[source,cpp]
+----
+IpeStats::IpeStats()
+    : connects_          ("connects")
+    , disconnects_       ("disconnects")
+    , heartbeatsRecvd_   ("heartbeatsRecvd")
+    , heartbeatsSent_    ("heartbeatsSent")
+{
+}
+----
+
+Carry on by including next page.

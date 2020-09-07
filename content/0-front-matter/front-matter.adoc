@@ -1,0 +1,22 @@
+Viasat Inc
+
+(C) 2020 by The Viasat Press
+
+Published in the Milky Way Galaxy
+
+This SSDD is part of contract XXHC00233 and is ...
+Created with Asciidoctor.
+
+.Revision History
+// [width="60%",options="header"]
+[options="header"]
+|==============================================
+| Revision  | Description                | Date
+| 001       | Initial                    | 07.03.2020
+| 002       | Revised updates            | 08.22.2020
+| 003       | Updates per Gov't comments | 08.22.2020
+|==============================================
+
+include::referenced-docs.adoc[]
+
+include::background.adoc[]

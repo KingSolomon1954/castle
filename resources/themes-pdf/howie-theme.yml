@@ -1,0 +1,6 @@
+
+
+extends: default
+base:
+  font-color: #00ffff
+

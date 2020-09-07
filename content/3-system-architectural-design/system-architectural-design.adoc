@@ -1,0 +1,18 @@
+== System Architectural Design
+
+I am System Architectural Design
+
+The following is some information.
+
+// Tried numerous ways to enlarge the following image but nothing 
+// seems to work. Need more investigation. Tried these with
+// both png and jpg exports.
+// image::images/subsystem-main.png[width=100%]
+// image::images/subsystem-main.png[scalewidth=150%,Subsystems]
+// image::images/subsystem-main.png[{fullWidth}]
+//
+// [#img-subsystems] 
+// .Hub Subsystem Layers
+// image::images/subsystem-main.png[width=100%]
+
+Carry on by including next page.

@@ -1,0 +1,8 @@
+== System Wide Design Decisions
+
+I am System Wide Design Decisions lead-in paragraph.
+
+include::microservices.adoc[]
+
+include::control-bus.adoc[]
+

@@ -1,0 +1,12 @@
+== Scope
+
+I am scope lead-in paragraph.
+
+include::identification.adoc[]
+
+include::system-overview.adoc[]
+
+include::document-overview.adoc[]
+
+// hard page break
+<<<
