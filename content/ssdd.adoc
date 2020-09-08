@@ -9,6 +9,7 @@
 :source-highlighter: rouge
 :rouge-style: magritte
 :description: Design document
+:agile-doc-number: 1347842
 
 include::../resources/includes/image-size.adoc[]
 

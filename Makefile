@@ -17,6 +17,14 @@ pdf: build
 pdf: PROG_EXEC  := asciidoctor-pdf
 pdf: IMAGE_DIR  := --attribute imagesdir=../resources/images
 pdf: EXTRA_ARGS := --attribute data-uri --attribute allow-uri-read
+
+xxx: build
+xxx: PROG_EXEC  := asciidoctor-pdf
+xxx: IMAGE_DIR  := --attribute imagesdir=../resources/images
+xxx: EXTRA_ARGS := --attribute data-uri --attribute allow-uri-read
+xxx: EXTRA_ARGS += --attribute pdf-themesdir=resources/themes-pdf
+xxx: EXTRA_ARGS += --attribute pdf-theme=howie
+
 # pdf: EXTRA_ARGS += --attribute pdf-themesdir=resources/themes-pdf
 # pdf: EXTRA_ARGS += --attribute pdf-theme=howie
 

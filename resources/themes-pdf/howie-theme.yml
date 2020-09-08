@@ -1,6 +1,61 @@
 
 
 extends: default
-base:
-  font-color: #00ffff
+page:
+  margin: [0.80in, 0.67in, 0.67in]
 
+header:
+  height: 0.75in
+  line-height: 0.90
+  border_color: BBBBBB
+  font-size: 8
+  recto:
+    left:
+      content: |
+        Blue Force Tracking Hub Refresh +
+        System/Subsystem Design Description (SSDD) +
+        howie was here +
+        nathan too +
+        arthur too
+    center:
+      content: |
+        **CUI**
+    right:
+      content: |
+        {sp} +
+        Viasat Logo
+  verso:
+    left:
+      content: $header-recto-left-content
+    center:
+      content: $header-recto-center-content
+    right:
+      content: $header-recto-right-content
+
+footer:
+  height: 0.75in
+  font-size: 8
+  recto:
+    left:
+      content: |
+        {agile-doc-number}, Rev. {revnumber}
+    center:
+      content: |
+        __Dissemination restricted as described on notices page.__ +
+        **CUI**
+    right:
+      content: |
+        {page-number}
+  verso:
+    left:
+      content: $footer-recto-left-content
+    center:
+      content: $footer-recto-center-content
+    right:
+      content: $footer-recto-right-content
+
+
+howie:
+  line-height: 1.2
+  line-height: 1.2
+  padding: [$base_line_height_length / 2, 1, 0, 1]
