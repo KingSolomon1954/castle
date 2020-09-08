@@ -1,0 +1,80 @@
+# PDF Theme for CUI Government documents authored by Viasat.
+#
+# Expects these attribtues to be defined:
+#
+#     vs-project-name           (appears in headers)
+#     vs-agile-doc-number       (appears in footers)
+#
+# Using "vs" as namespace for Viasat specific attributes
+#
+#----------------------------------------------------
+
+extends: default
+page:
+  # Adjust page margin so page text starts below header.
+  # Example, if header height is .60in, then top margin should be say, .70in
+  #        top,    right,  bottom, left
+  margin: [0.70in, 0.67in, 0.67in, 0.67in]
+
+header:
+  height: 0.60in
+  line-height: 0.90
+  border-color: 67adbf
+  # Uncomment next line to see full size of header
+  # background_color: 9999ff
+  image-vertical-align: 18  # logo closer to bottom border of header
+  font-size: 8
+  recto:
+    left:
+      font_color: 67adbf
+      content: |
+        {sp} +
+        {vs-project-name} +
+        {doctitle}
+    center:
+      font-size: 12
+      content: |
+        **CUI**
+    right:
+      content: image:../images/LogoViasatSmall.png[width=80]
+  verso:
+    left:
+      font_color: $header-recto-left-font-color
+      content: $header-recto-left-content
+    center:
+      font-size: $header-recto-center-font-size
+      content: $header-recto-center-content
+    right:
+      content: $header-recto-right-content
+
+footer:
+  height: 0.75in
+  line-height: 0.90
+  border_color: $header-border-color
+  font-size: 8
+  recto:
+    left:
+      content: |
+        {vs-agile-doc-number}, Rev. {revnumber}
+    center:
+      content: |
+        __Dissemination restricted as described on notices page.__ +
+        **CUI**
+    right:
+      content: |
+        {page-number}
+  verso:
+    left:
+      content: $footer-recto-left-content
+    center:
+      content: $footer-recto-center-content
+    right:
+      content: $footer-recto-right-content
+
+
+howie:
+  line-height: 1.2
+  border_width: 0.50
+  padding: [$base_line_height_length / 2, 1, 0, 1]
+  content:
+    xyz: image:../images/LogoViasatSmall.png[width=80]

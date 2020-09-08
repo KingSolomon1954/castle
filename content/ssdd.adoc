@@ -1,5 +1,7 @@
-:doctitle: System Segment Design Description
+:doctitle: System/Subsystem Design Description
 :author: Viasat Inc
+:vs-project-name: Blue Force Tracking Hub Refresh
+:vs-agile-doc-number: 1347842
 :revnumber: 1.0
 :email: hub_refresh@viasat.com
 :doctype: book
@@ -8,8 +10,6 @@
 :chapter-label:
 :source-highlighter: rouge
 :rouge-style: magritte
-:description: Design document
-:agile-doc-number: 1347842
 
 include::../resources/includes/image-size.adoc[]
 
