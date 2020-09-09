@@ -25,8 +25,12 @@ Other Makefile options:
 **make** - builds SSDD into PDF +
 **make pdf** - same as previous +
 **make html** - builds SSDD into self-contained html +
-**make html-unpacked** - builds SSDD into HTML but with images in a sub-folder
+**make unpacked** - builds SSDD into HTML but with images in a sub-folder +
+**make <filename>.html** - builds file into HTML (see example below) +
+**make <filename>.pdf** - builds file into PDF (see exmple below) +
 
+    make scope.html - operates on content/2-scope/scope.adoc
+    make glossary.pdf - operates on content/4-appendicies/glossary.adoc
 
 == Two-Layer Directory Hierarchy
 
@@ -39,7 +43,6 @@ folder.
 
 Place all images in `resources/images`.
 This is the one and only directory for all images.
-
 
 == Customizing PDF Output
 

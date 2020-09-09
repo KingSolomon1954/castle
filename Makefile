@@ -1,58 +1,62 @@
 CNTR_EXEC := $(shell if which podman 1>&2 > /dev/null; then echo podman; else echo docker; fi)
-
+CNTR_NAME := asciidoctor/docker-asciidoctor:latest
 DEST_DIR  := _build/ssdd
-# Output directory structure
-#
-# _build/
-#     ssdd/
-#         ssdd.pdf
-#         ssdd.html
-#         images/    only if html-unpacked
-#             image1.png
-#             image2.png
-#
 
-# SSDD with embedded images (default since first in Makefile)
-pdf: build
-pdf: PROG_EXEC  := asciidoctor-pdf
-pdf: IMAGE_DIR  := --attribute imagesdir=../resources/images
-pdf: EXTRA_ARGS := --attribute data-uri --attribute allow-uri-read
-pdf: EXTRA_ARGS += --attribute pdf-themesdir=resources/themes-pdf
-pdf: EXTRA_ARGS += --attribute pdf-theme=vs-cui
+# SSDD (PDF) with images embedded (default since first in Makefile)
+pdf: content/0-ssdd/ssdd.pdf
 
-# pdf: EXTRA_ARGS += --attribute pdf-themesdir=resources/themes-pdf
-# pdf: EXTRA_ARGS += --attribute pdf-theme=howie
+# SSDD (HTML) with images embedded 
+html: content/0-ssdd/ssdd.html
 
-# SSDD with embedded images
-html: build
-html: PROG_EXEC  := asciidoctor
-html: IMAGE_DIR  := --attribute imagesdir=../resources/images
-html: EXTRA_ARGS := --attribute data-uri --attribute allow-uri-read
-html: EXTRA_ARGS += --attribute stylesdir=../resources/styles-html
-html: EXTRA_ARGS += --attribute stylesheet=adoc-colony.css
+# SSDD (HTML) with images in subfolder
+unpacked: html-unpacked
 
-# SSDD with images in a side folder
-html-unpacked: build
-html-unpacked: PROG_EXEC  := asciidoctor
+%.pdf : CMD := asciidoctor-pdf
+%.pdf : IMAGE_DIR  := --attribute imagesdir=../../resources/images
+%.pdf : EXTRA_ARGS += --attribute pdf-themesdir=resources/themes-pdf
+%.pdf : EXTRA_ARGS += --attribute pdf-theme=vs-cui
+%.pdf : %.adoc
+	# Generating $(DEST_DIR)/$(@F)
+	$(call build-it,$<)
+
+%.html : CMD := asciidoctor
+%.html : IMAGE_DIR  := --attribute imagesdir=../../resources/images
+%.html : EXTRA_ARGS += --attribute data-uri --attribute allow-uri-read
+%.html : EXTRA_ARGS += --attribute stylesdir=../../resources/styles-html
+%.html : EXTRA_ARGS += --attribute stylesheet=adoc-colony.css
+%.html : %.adoc
+	# Generating $(DEST_DIR)/$(@F)
+	$(call build-it,$<)
+
+html-unpacked: CMD := asciidoctor
 html-unpacked: IMAGE_DIR  := --attribute imagesdir=images
-html-unpacked: EXTRA_ARGS := --attribute stylesdir=../resources/styles-html
+html-unpacked: EXTRA_ARGS += --attribute stylesdir=../../resources/styles-html
 html-unpacked: EXTRA_ARGS += --attribute stylesheet=adoc-colony.css
-
-build:
-	$(CNTR_EXEC) run \
-	    --rm \
-	    --volume="$$PWD:/documents" \
-	    asciidoctor/docker-asciidoctor:latest \
-	    $(PROG_EXEC) \
-	    content/ssdd.adoc \
-	    --destination-dir $(DEST_DIR) \
-	    --safe-mode unsafe \
-	    $(IMAGE_DIR) \
-	    $(EXTRA_ARGS)
-ifeq (unpacked,$(findstring unpacked,$(MAKECMDGOALS)))
+html-unpacked:
+	# Generating $(DEST_DIR)/ssdd.html
+	$(call build-it,content/0-ssdd/ssdd.adoc)
 	cp -r -p resources/images $(DEST_DIR)
-endif
+
+define build-it
+    $(CNTR_EXEC) run \
+        --rm \
+        --volume="$$PWD:/documents" \
+        $(CNTR_NAME) \
+        $(CMD) \
+        $1 \
+        --destination-dir $(DEST_DIR) \
+        --safe-mode unsafe \
+        $(IMAGE_DIR) \
+        $(EXTRA_ARGS)
+endef
+
+VPATH := content/0-ssdd \
+         content/1-scope \
+         content/2-system-wide-design-decisions \
+         content/3-system-architectural-design \
+         content/4-appendicies
 
 clean:
 	rm -rf _build
-.PHONY: clean all pdf html html-unpacked
+.PHONY: clean all pdf html packed html-unpacked
+
