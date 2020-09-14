@@ -60,3 +60,22 @@ clean:
 	rm -rf _build
 .PHONY: clean all pdf html packed html-unpacked
 
+# Fragment for asciidoc to test for environment
+#
+# :man source:   Yabai
+# :man version:  {revnumber}
+# :man manual:   Yabai Manual
+# 
+# ifdef::env-github[]
+# :toc:
+# :toc-title:
+# :toc-placement!:
+# :numbered:
+# endif::[]
+# 
+# yabai(1)
+# ========
+# 
+# ifdef::env-github[]
+# toc::[]
+# endif::[]

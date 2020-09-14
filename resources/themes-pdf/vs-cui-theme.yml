@@ -14,7 +14,7 @@ page:
   # Adjust page margin so page text starts below header.
   # Example, if header height is .60in, then top margin should be say, .70in
   #        top,    right,  bottom, left
-  margin: [0.70in, 0.67in, 0.67in, 0.67in]
+  margin: [0.70in, 0.67in, 0.70in, 0.67in]
 
 header:
   height: 0.60in
