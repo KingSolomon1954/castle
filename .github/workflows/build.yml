@@ -63,7 +63,7 @@ jobs:
           echo "event commit msg: ${{ github.event.head_commit.message }}"
           echo "event pull_request title: ${{ github.event.pull_request.title }}"
           title=${{ github.event.pull_request.title }}
-          if [ -z "title" ]; then
+          if [ -z "$title" ]; then
               echo "title is empty"
           else
               echo "title is $title"
