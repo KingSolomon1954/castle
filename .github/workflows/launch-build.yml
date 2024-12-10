@@ -19,6 +19,9 @@ jobs:
 
     steps:
       
+      - name: Install podman
+        run:  echo sudo apt install -y podman
+        
       - name: Checkout repository
         uses: actions/checkout@v4
 
