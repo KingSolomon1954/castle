@@ -17,15 +17,15 @@ jobs:
 
     runs-on: ubuntu-latest
 
-      steps:
-        - name: Checkout repository
-          uses: actions/checkout@v4
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-        - name: Establish build type
-          id: build_type
-          run: echo "do_release=no" >> ${GITHUB_OUTPUT}
+      - name: Establish build type
+        id: build_type
+        run: echo "do_release=no" >> ${GITHUB_OUTPUT}
 
-        - name: Run shared build
-          uses: ./.github/workflows/shared-build.yml
+      - name: Run shared build
+        uses: ./.github/workflows/shared-build.yml
 
 #      secrets: inherit  # Pass repository secrets to the shared workflow
