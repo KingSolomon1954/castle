@@ -55,6 +55,12 @@ jobs:
               echo "pull_request was NOT merged"
           fi
           echo "howie ${{ inputs.do-release }}"
+          if  ${{ inputs.do-release }}; then
+              echo "do-release is true"
+          else
+              echo "do-release is false"
+          fi
+              
 
       - name: Run unit tests
         run:  |
@@ -62,6 +68,7 @@ jobs:
 
       - name: Bump version number (release-only)
         if: ${{ steps.build_type.outputs.do_release == 'yes' }}
+        if: ${{ inputs.do-release }}
         run:  |
           bump_level= ${{ steps.build_type.outputs.bump_level }}
           echo make BUMP=$bump_level bump-version
