@@ -60,7 +60,7 @@ jobs:
         run: |
           echo "event name: ${{ github.event_name }}"
           echo "action: ${{ github.action }}"
-          # echo "event commit msg: ${{ github.event.head_commit.message }}"
+          echo "event commit msg: ${{ github.event.head_commit.message }}"
 
       - name: Run unit tests
         run:  |
