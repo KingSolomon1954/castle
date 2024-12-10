@@ -1,8 +1,0 @@
-=== System Overview
-
-I am system overview. This system is a beast.
-
-.The Royal Dragon
-image::DragonBlue.jpg[{full-width},align="center"]
-
-Carry on by including next page.
