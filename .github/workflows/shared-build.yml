@@ -28,8 +28,6 @@ jobs:
       
       - name: Checkout repository
         uses: actions/checkout@v4
-#       with:
-#         Default: ${{ github.repository }}
 
       - name: Install podman
         run:  echo sudo apt install -y podman
@@ -56,6 +54,7 @@ jobs:
           else
               echo "pull_request was NOT merged"
           fi
+          echo "howie ${{ inputs.do-release }}"
 
       - name: Run unit tests
         run:  |
