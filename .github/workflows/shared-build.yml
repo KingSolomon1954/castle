@@ -60,7 +60,7 @@ jobs:
           else
               echo "do-release is false"
           fi
-              
+          echo "howie ${{ github.workflow }}"
 
       - name: Run unit tests
         run:  |
