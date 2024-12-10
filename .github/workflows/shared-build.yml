@@ -18,6 +18,11 @@ jobs:
 
     steps:
       
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          default: ${{ github.repository }}
+
       - name: lookee lookee
         run: |
           echo "event name: ${{ github.event_name }}"
