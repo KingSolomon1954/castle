@@ -1,6 +1,6 @@
 # ----------------------------------------------
 #
-# 
+#
 # ----------------------------------------------
 
 name: Launch-Build
@@ -8,25 +8,25 @@ run-name: Build on branch "${{ github.ref_name }}" - ${{ github.event.head_commi
 
 on:
   push:
-    
+
   workflow_dispatch: # Allow manually triggering from GitHub Actions tab
 
 jobs:
 
   Launch-Build:
-    
+
     runs-on: ubuntu-latest
 
     steps:
-      
+
       - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Establish build type
         id: build_type
         run: echo "do_release=no" >> ${GITHUB_OUTPUT}
-      
+
       - name: Run shared build
         uses: ./.github/workflows/shared-build.yml
-        
-      secrets: inherit
+
+      secrets: inherit  # Pass repository secrets to the shared workflow.
