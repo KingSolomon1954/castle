@@ -19,7 +19,7 @@ permissions:
 
 jobs:
 
-  Release-Build:
+  release-build:
     
     runs-on: ubuntu-latest
     if: startsWith(github.event.pull_request.title, 'Release:')
