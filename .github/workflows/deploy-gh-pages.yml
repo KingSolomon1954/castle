@@ -16,6 +16,9 @@ on:
     workflows:
       - "Launch Build"
       - "Launch Build and Release"
+
+    branches:
+      - *
       
 #    types:
 #      - completed
