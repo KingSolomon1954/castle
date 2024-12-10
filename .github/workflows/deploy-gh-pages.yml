@@ -11,7 +11,7 @@ run-name: Publish docs to GitHub Pages
 
 on:
   workflow_run:
-    workflows: "Launch Build"
+    workflows: [Launch Build]
 #    types:
 #      - completed
       
