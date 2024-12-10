@@ -68,7 +68,7 @@ jobs:
           else
               echo "title is $title"
           fi
-          if startsWith($title, 'Release:'); then
+          if startsWith("$title", 'Release:'); then
               echo "starts with Release:"
           else
               echo "does NOT start with Release:"
