@@ -25,9 +25,9 @@ on:
 #      - ./version
 #      - etc/changelog
 
-    pull_request:
-      types:
-        - closed
+  pull_request:
+    types:
+      - closed
       
 #  pull_request:
 #    branches:
