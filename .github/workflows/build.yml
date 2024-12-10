@@ -19,12 +19,6 @@ run-name: Build on branch "${{ github.ref_name }}" - ${{ github.event.head_commi
 
 on:
   
-  push:
-    paths-ignore:
-      - docs/site/**
-      - ./version
-      - etc/changelog
-
   pull_request:
     branches: main
     types: closed
