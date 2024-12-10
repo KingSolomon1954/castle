@@ -73,7 +73,7 @@ jobs:
           else
               echo "does NOT start with Release:"
           fi
-          if ${{ github.event.pull_request.merged == true }}
+          if ${{ github.event.pull_request.merged == true }}; then
               echo "pull_request was merged"
           else
               echo "pull_request was NOT merged"
