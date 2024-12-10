@@ -129,7 +129,7 @@ jobs:
 
       - name: Push tarball to Github Release (release-only)
         if: ${{ steps.test_for_release.outputs.do_release == 'yes' }}
-        run: echo calling github deploy workflow
+        run: echo Invoking release action
         
 #        uses: softprops/action-gh-release@v2
 #        with:
