@@ -16,6 +16,8 @@ on:
       - "Launch Build"
       - "Shared Build"
       - "do-build/shared-build"
+      - "Launch-Build"
+      - "launch-build"
     types:
       - completed
       
