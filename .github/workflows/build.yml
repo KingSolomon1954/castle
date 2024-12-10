@@ -27,8 +27,7 @@ on:
 
   pull_request:
     types:
-      - completed
-#      - closed
+      - closed
       
 #  pull_request:
 #    branches:
