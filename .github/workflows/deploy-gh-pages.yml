@@ -14,8 +14,8 @@ on:
   
   workflow_run:
     workflows: ["Launch-Build"]
-    types:
-      - completed
+#    types:
+#      - completed
       
 #    branches:
 #      - main
