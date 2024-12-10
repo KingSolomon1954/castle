@@ -30,5 +30,4 @@ jobs:
         run: echo "do_release=no" >> ${GITHUB_OUTPUT}
       
       - name: Run shared build
-#       uses: ./.github/workflows/shared-build.yml
-        uses: ./.github/workflows/deploy-gh-pages.yml
+        uses: ./.github/workflows/shared-build.yml
