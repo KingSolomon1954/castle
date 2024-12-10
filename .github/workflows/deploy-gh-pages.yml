@@ -10,12 +10,13 @@ name: Publish docs to GitHub Pages
 run-name: Publish docs to GitHub Pages
 
 on:
-  workflow_call:
+#   workflow_call:
   
-#  workflow_run:
-#    workflows: ["Build"]
-#    types:
-#      - completed
+  workflow_run:
+    workflows: ["Launch-Build"]
+    types:
+      - completed
+      
 #    branches:
 #      - main
 #    paths:

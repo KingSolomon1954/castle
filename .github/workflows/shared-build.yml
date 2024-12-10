@@ -127,6 +127,6 @@ jobs:
 #          draft: false
 #          prerelease: false
 #
-      - name: Deploy release docs
-        if: ${{ inputs.do-release }}
-        uses: ./.github/workflows/deploy-gh-pages.yml
+#      - name: Deploy release docs
+#        if: ${{ inputs.do-release }}
+#        uses: ./.github/workflows/deploy-gh-pages.yml
