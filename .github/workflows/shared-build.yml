@@ -14,14 +14,14 @@ jobs:
 
   Shared-Build:
     
-#     runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
     steps:
       
-#      - name: Checkout repository
-#        uses: actions/checkout@v4
-#        with:
-#          Default: ${{ github.repository }}
+      - name: Checkout repository
+        uses: actions/checkout@v4
+#       with:
+#         Default: ${{ github.repository }}
 
       - name: Install podman
         run:  echo sudo apt install -y podman
