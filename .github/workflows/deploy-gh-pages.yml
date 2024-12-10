@@ -53,8 +53,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         
-      - name: Howie1 step
-        run:  echo Howie 1
+      - name: lookee lookee
+        run: |
+          echo "event name: ${{ github.event_name }}"
+          echo "action: ${{ github.action }}"
+          echo "event commit msg: ${{ github.event.head_commit.message }}"
         
 #      - name: Setup Pages
 #        uses: actions/configure-pages@v5

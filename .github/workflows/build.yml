@@ -18,11 +18,16 @@ name: Build
 run-name: Build on branch "${{ github.ref_name }}" - ${{ github.event.head_commit.message }}
 
 on:
-  push:
-    paths-ignore:
-      - docs/site/**
-      - ./version
-      - etc/changelog
+  
+#  push:
+#    paths-ignore:
+#      - docs/site/**
+#      - ./version
+#      - etc/changelog
+#
+    pull_request:
+      types:
+        - closed
       
 #  pull_request:
 #    branches:
@@ -50,7 +55,13 @@ jobs:
         
       - name: Checkout repository
         uses: actions/checkout@v4
-        
+
+      - name: lookee lookee
+        run: |
+          echo "event name: ${{ github.event_name }}"
+          echo "action: ${{ github.action }}"
+          echo "event commit msg: ${{ github.event.head_commit.message }}"
+
       - name: Run unit tests
         run:  |
           echo make unit-test
