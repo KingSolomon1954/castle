@@ -21,9 +21,6 @@ jobs:
       - name: Install podman
         run:  echo sudo apt install -y podman
         
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
       - name: lookee lookee
         run: |
           echo "event name: ${{ github.event_name }}"

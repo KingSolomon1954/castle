@@ -19,6 +19,9 @@ jobs:
 
     steps:
       
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Establish build type
         id: build_type
         run: echo "do_release=no" >> ${GITHUB_OUTPUT}
