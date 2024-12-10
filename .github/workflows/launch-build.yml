@@ -13,19 +13,21 @@ on:
 
 jobs:
 
-  launch-build:
-
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Establish build type
-        id: build_type
-        run: echo "do_release=no" >> ${GITHUB_OUTPUT}
-
-      - name: Run shared build
-        uses: ./.github/workflows/shared-build.yml
-        
-  secrets: inherit  # Pass repository secrets to the shared workflow
+  do-build:
+    uses: ./.github/workflows/shared-build.yml
+    with:
+      doRelease: "false"
+    secrets: inherit  # Pass repository secrets to the shared workflow
+    
+#    steps:
+#      - name: Checkout repository
+#        uses: actions/checkout@v4
+#
+#      - name: Establish build type
+#        id: build_type
+#        run: echo "do_release=no" >> ${GITHUB_OUTPUT}
+#
+#      - name: Run shared build
+#        uses: ./.github/workflows/shared-build.yml
+#        
+#
