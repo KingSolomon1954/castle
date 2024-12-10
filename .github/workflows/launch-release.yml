@@ -3,7 +3,7 @@
 # 
 # ----------------------------------------------
 
-name: Launch-Release
+name: Launch Build and Release
 run-name: Release on branch "${{ github.ref_name }}" - ${{ github.event.head_commit.message }}
 
 on:
@@ -19,22 +19,15 @@ permissions:
 
 jobs:
 
-  release-build:
-    
-    runs-on: ubuntu-latest
+  do-build:
     if: startsWith(github.event.pull_request.title, 'Release:')
-        
-    steps:
-      
-      - name: Checkout repository
-        uses: actions/checkout@v4
+    uses: ./.github/workflows/shared-build.yml
+    with:
+      do-release: true
+    secrets: inherit  # Pass repository secrets to the shared workflow
 
-      - name: Establish build type
-        id: buildType
-        run: |
-          echo "do_release=yes" >> ${GITHUB_OUTPUT}
-          bump_level=$(echo "${{ github.event.pull_request.title }}" | awk '{ print $2 }')
-          echo "bump_level=$bump_level" >> ${GITHUB_OUTPUT}
+#        run: |
+#          echo "do_release=yes" >> ${GITHUB_OUTPUT}
+#          bump_level=$(echo "${{ github.event.pull_request.title }}" | awk '{ print $2 }')
+#          echo "bump_level=$bump_level" >> ${GITHUB_OUTPUT}
       
-      - name: Run shared build
-        uses: ./.github/workflows/shared-build.yml
