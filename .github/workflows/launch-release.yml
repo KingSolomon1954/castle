@@ -19,7 +19,7 @@ permissions:
 
 jobs:
 
-  do-build:
+  do-release:
     if: startsWith(github.event.pull_request.title, 'Release:')
     uses: ./.github/workflows/shared-build.yml
     with:
