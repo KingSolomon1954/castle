@@ -1,0 +1,20 @@
+# ----------------------------------------------
+#
+#
+# ----------------------------------------------
+
+name: Launch Build
+run-name: Build on branch "${{ github.ref_name }}" - ${{ github.event.head_commit.message }}
+
+on:
+  push:
+
+  workflow_dispatch: # Allow manually triggering from GitHub Actions tab
+
+jobs:
+
+  do-build:
+    uses: ./.github/workflows/shared-build.yml
+    with:
+      do-release: false
+    secrets: inherit  # Pass repository secrets to the shared workflow

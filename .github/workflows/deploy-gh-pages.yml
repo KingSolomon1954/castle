@@ -6,16 +6,18 @@
 #
 # ----------------------------------------------
 
-name: Publish docs to GitHub Pages
+name:     Publish docs to GitHub Pages
 run-name: Publish docs to GitHub Pages
 
 on:
-  workflow_call:
-  
-#  workflow_run:
-#    workflows: ["Build"]
-#    types:
-#      - completed
+  workflow_run:
+    workflows:
+      - "Launch Build"
+      - "Launch Build and Release"
+    types:
+      - completed
+      
+#   workflow_call:
 #    branches:
 #      - main
 #    paths:
@@ -35,6 +37,7 @@ permissions:
 # between the run in-progress and latest queued. However, do
 # NOT cancel in-progress runs as we want to allow these
 # production deployments to complete.
+#
 concurrency:
   group: "pages"
   cancel-in-progress: false
