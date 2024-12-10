@@ -13,9 +13,9 @@ on:
 #   workflow_call:
   
   workflow_run:
-    workflows: ["Launch-Build"]
-#    types:
-#      - completed
+    workflows: ["Launch-Build", "Shared-Build"]
+    types:
+      - completed
       
 #    branches:
 #      - main
