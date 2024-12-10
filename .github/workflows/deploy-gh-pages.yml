@@ -18,7 +18,7 @@ on:
       - "Launch Build and Release"
 
     branches:
-      - *
+      - "*"
       
 #    types:
 #      - completed
