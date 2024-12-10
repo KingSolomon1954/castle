@@ -18,10 +18,10 @@ jobs:
 
     steps:
       
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          Default: ${{ github.repository }}
+#      - name: Checkout repository
+#        uses: actions/checkout@v4
+#        with:
+#          Default: ${{ github.repository }}
 
       - name: lookee lookee
         run: |
