@@ -28,4 +28,4 @@ jobs:
       - name: Run shared build
         uses: ./.github/workflows/shared-build.yml
         
-    secrets: inherit  # Pass repository secrets to the shared workflow
+  secrets: inherit  # Pass repository secrets to the shared workflow
