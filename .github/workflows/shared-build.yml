@@ -10,6 +10,9 @@ on:
   
   workflow_call:
     
+permissions:
+  contents: write
+  
 jobs:
 
   Shared-Build:
