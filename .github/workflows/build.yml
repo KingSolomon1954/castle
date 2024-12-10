@@ -19,11 +19,11 @@ run-name: Build on branch "${{ github.ref_name }}" - ${{ github.event.head_commi
 
 on:
   
-#  push:
-#    paths-ignore:
-#      - docs/site/**
-#      - ./version
-#      - etc/changelog
+  push:
+    paths-ignore:
+      - docs/site/**
+      - ./version
+      - etc/changelog
 
   pull_request:
     types:
@@ -62,6 +62,22 @@ jobs:
           echo "action: ${{ github.action }}"
           echo "event commit msg: ${{ github.event.head_commit.message }}"
           echo "event pull_request title: ${{ github.event.pull_request.title }}"
+          title=${{ github.event.pull_request.title }}
+          if [ -z "$title" ]; then
+              echo "title is empty"
+          else
+              echo "title is $title"
+          fi
+          if [[ $title =~ "^Release:*" ]]; then
+              echo "starts with Release:"
+          else
+              echo "does NOT start with Release:"
+          fi
+          if ${{ github.event.pull_request.merged == true }}; then
+              echo "pull_request was merged"
+          else
+              echo "pull_request was NOT merged"
+          fi
 
       - name: Run unit tests
         run:  |
