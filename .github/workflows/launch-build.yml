@@ -26,7 +26,6 @@ jobs:
           run: echo "do_release=no" >> ${GITHUB_OUTPUT}
 
         - name: Run shared build
-          run: echo ./.github/workflows/shared-build.yml
-          # uses: ./.github/workflows/shared-build.yml
+          uses: ./.github/workflows/shared-build.yml
 
-      secrets: inherit  # Pass repository secrets to the shared workflow
+#      secrets: inherit  # Pass repository secrets to the shared workflow
