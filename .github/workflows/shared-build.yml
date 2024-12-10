@@ -67,7 +67,6 @@ jobs:
           echo make unit-test
 
       - name: Bump version number (release-only)
-        if: ${{ steps.build_type.outputs.do_release == 'yes' }}
         if: ${{ inputs.do-release }}
         run:  |
           bump_level= ${{ steps.build_type.outputs.bump_level }}
