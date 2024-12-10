@@ -19,15 +19,19 @@ run-name: Build on branch "${{ github.ref_name }}" - ${{ github.event.head_commi
 
 on:
   
+  pull_request:
+    branches: main
+    types: closed
+      
   push:
     paths-ignore:
       - docs/site/**
       - ./version
       - etc/changelog
 
-  pull_request:
-    types:
-      - closed
+#  pull_request:
+#    types:
+#      - closed
       
 #  pull_request:
 #    branches:
@@ -62,7 +66,7 @@ jobs:
           echo "action: ${{ github.action }}"
           echo "event commit msg: ${{ github.event.head_commit.message }}"
           echo "event pull_request title: ${{ github.event.pull_request.title }}"
-          title=${{ github.event.pull_request.title }}
+          title="${{ github.event.pull_request.title }}"
           if [ -z "$title" ]; then
               echo "title is empty"
           else
