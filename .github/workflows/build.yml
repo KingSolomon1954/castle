@@ -62,6 +62,11 @@ jobs:
           echo "action: ${{ github.action }}"
           echo "event commit msg: ${{ github.event.head_commit.message }}"
           echo "event pull_request title: ${{ github.event.pull_request.title }}"
+          if startsWith(github.event.pull_request.title, 'Release:'); then
+              echo "starts with Release:"
+          else
+              echo "does NOT start with Release:"
+          fi
 
       - name: Run unit tests
         run:  |
