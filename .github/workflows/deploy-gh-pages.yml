@@ -12,16 +12,9 @@ run-name: Publish docs to GitHub Pages
 on:
   
   workflow_run:
-    workflows:
-      - "Launch Build"
-      - "Shared Build"
-      - "do-build/shared-build"
-      - "do-build"
-      - "Launch-Build"
-      - "launch-build"
-      - "launch build"
-    types:
-      - completed
+    workflows: "Launch Build"
+#    types:
+#      - completed
       
 #   workflow_call:
 #    branches:
