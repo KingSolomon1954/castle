@@ -62,6 +62,7 @@ jobs:
           echo "event name: ${{ github.event_name }}"
           echo "action: ${{ github.action }}"
           echo "event commit msg: ${{ github.event.head_commit.message }}"
+          echo "event pull_request title: ${{ github.event.pull_request.title }}"
 
       - name: Run unit tests
         run:  |
