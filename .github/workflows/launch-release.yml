@@ -36,6 +36,7 @@ jobs:
     # if: startsWith(github.event.pull_request.title, 'Release:')
     # name: Do release build on main and create release
     # runs-on: ubuntu-latest
+    needs: wait-for-natural-build
     uses: ./.github/workflows/shared-build.yml
     with:
       do-release: true
