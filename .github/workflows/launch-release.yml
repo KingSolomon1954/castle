@@ -35,7 +35,7 @@ jobs:
   do-release-build:
     # if: startsWith(github.event.pull_request.title, 'Release:')
     # name: Do release build on main and create release
-    runs-on: ubuntu-latest
+    # runs-on: ubuntu-latest
     uses: ./.github/workflows/shared-build.yml
     with:
       do-release: true
