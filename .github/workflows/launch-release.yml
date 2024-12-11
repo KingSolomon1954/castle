@@ -24,7 +24,7 @@ jobs:
     name: Wait on natural build to complete
     steps:
       - name: Waiting
-        uses: lewagon/wait-on-check-action
+        uses: lewagon/wait-on-check-action@1.3.4
         with:
           ref: main
           check-name: do-build
