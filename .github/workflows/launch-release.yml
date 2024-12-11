@@ -1,0 +1,44 @@
+# ----------------------------------------------
+#
+# 
+# ----------------------------------------------
+
+name: Launch Build and Release
+run-name: Release on branch "${{ github.ref_name }}" - ${{ github.event.head_commit.message }}
+
+on:
+  pull_request:
+    branches: main
+    types: closed
+    
+  workflow_dispatch: # Allow manually triggering from GitHub Actions tab
+  # howie TODO add inputs
+    
+permissions:
+  contents: write
+
+jobs:
+
+  do-release:
+    if: startsWith(github.event.pull_request.title, 'Release:')
+    name: Build on main then create a release
+
+    steps:
+      - name: Wait for natural build on main to finish
+        uses: lewagon/wait-on-check-action
+        with:
+          ref: main
+          check-name: do-build
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          wait-interval: 10
+
+      - name Do release build on main and create release
+        uses: ./.github/workflows/shared-build.yml
+        with:
+          do-release: true
+        secrets: inherit  # Pass repository secrets to the shared workflow
+
+#        run: |
+#          echo "do_release=yes" >> ${GITHUB_OUTPUT}
+#          bump_level=$(echo "${{ github.event.pull_request.title }}" | awk '{ print $2 }')
+#          echo "bump_level=$bump_level" >> ${GITHUB_OUTPUT}
