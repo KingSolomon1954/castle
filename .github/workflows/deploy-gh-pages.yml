@@ -1,13 +1,16 @@
 # ----------------------------------------------
 #
-# Publishes docs to GitHub Pages
+# Publishes docs to GitHub Pages.
 #
-# Setup to trigger after successful CI Build.
+# Self-triggers after a successful Release workflow.
+#
+# Whatever is checked-in to docs/site is
+# deployed to git hub pages.
 #
 # ----------------------------------------------
 
-name:     Publish docs to GitHub Pages
-run-name: Publish docs to GitHub Pages
+name:     Deploy docs to GitHub Pages
+run-name: Deploy docs to GitHub Pages
 
 on:
   workflow_run:

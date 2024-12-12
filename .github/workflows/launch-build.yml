@@ -8,6 +8,10 @@ run-name: Build on branch "${{ github.ref_name }}" - ${{ github.event.head_commi
 
 on:
   push: # All branches do a build on a push, including main
+    paths-ignore:
+      - docs/site/**
+      - ./version
+      - etc/changelog
 
 jobs:
 
