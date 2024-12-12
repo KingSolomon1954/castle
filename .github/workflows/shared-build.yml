@@ -53,8 +53,7 @@ jobs:
 
       - name: Bump version number (release-only)
         if: ${{ inputs.do-release == 'yes' }}
-        run:  |
-          echo make BUMP=${{ inputs.release-level }} bump-version
+        run: echo make BUMP=${{ inputs.release-level }} bump-version
 
       - name: Build docs
         run:  echo make docs
@@ -87,10 +86,8 @@ jobs:
         
       - name: Checkin docs (release-only)
         if: ${{ inputs.do-release == 'yes' }}
-        # Performs a checkin on docs, version file and changelog file.
-        # Hence we need the paths-ignore specification
-        # at top of this action to prevent a build loop. 
-        # Plus needs "contents" permission to write to repo.
+        # Performs a checkin on docs, version file and changelog file
+        # therefore needs "contents" permission to write to repo.
         run: |
           echo git config user.name  github-actions[bot]
           echo git config user.email github-actions[bot]@users.noreply.github.com
@@ -110,7 +107,3 @@ jobs:
 #          body: Download ${{ steps.version_info.outputs.tarFileBase }}
 #          draft: false
 #          prerelease: false
-#
-#      - name: Deploy release docs
-#        if: ${{ inputs.do-release }}
-#        uses: ./.github/workflows/deploy-gh-pages.yml
