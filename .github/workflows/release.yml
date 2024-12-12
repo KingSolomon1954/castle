@@ -24,6 +24,6 @@ jobs:
   build-and-release:
     uses: ./.github/workflows/shared-build.yml
     with:
-      do-release: true
+      do-release: 'yes'
       release-level: ${{ inputs.level }}
     secrets: inherit  # Pass repository secrets to the shared workflow

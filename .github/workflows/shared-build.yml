@@ -52,7 +52,7 @@ jobs:
           echo make unit-test
 
       - name: Bump version number (release-only)
-        if: ${{ inputs.do-release }}
+        if: ${{ inputs.do-release == 'yes' }}
         run:  |
           echo make BUMP=${{ inputs.release-level }} bump-version
 
@@ -63,7 +63,7 @@ jobs:
         run:  echo make docs-publish
 
       - name: Create changelog (release-only)
-        if: ${{ inputs.do-release }}
+        if: ${{ inputs.do-release == 'yes }}
         run: echo make update-changelog
 
       - name: Create tarball
@@ -86,7 +86,7 @@ jobs:
         run:  echo make test-tarball
         
       - name: Checkin docs (release-only)
-        if: ${{ inputs.do-release }}
+        if: ${{ inputs.do-release == 'yes' }}
         # Performs a checkin on docs, version file and changelog file.
         # Hence we need the paths-ignore specification
         # at top of this action to prevent a build loop. 
@@ -99,7 +99,7 @@ jobs:
           echo git push
 
       - name: Push tarball to Github Release (release-only)
-        if: ${{ inputs.do-release }}
+        if: ${{ inputs.do-release == 'yes' }}
         run: echo Invoking release action
         
 #        uses: softprops/action-gh-release@v2
