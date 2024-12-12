@@ -12,20 +12,13 @@ run-name: Publish docs to GitHub Pages
 on:
   workflow_run:
     workflows:
-      - "Launch Build and Release"
+      - "Release"
     types:
       - completed
     branches:
       - main
       
-#   workflow_call:
-#    branches:
-#      - main
-#    paths:
-#      - ./version
-
-  # Allow manually triggering from GitHub Actions tab
-  workflow_dispatch:
+  workflow_dispatch:  # Allow manually triggering
 
 # Sets permissions on the GITHUB_TOKEN to allow deployment
 # to GitHub Pages
