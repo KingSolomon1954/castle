@@ -3,7 +3,7 @@
 #
 # ----------------------------------------------
 
-# name: Shared Build
+name: Shared Build
 run-name: Shared Build on branch "${{ github.ref_name }}" - ${{ github.event.head_commit.message }}
 
 on:
