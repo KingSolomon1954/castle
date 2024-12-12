@@ -4,13 +4,13 @@
 # ----------------------------------------------
 
 name: Release
-run-name: Trigger release on branch "${{ github.ref_name }}"
+run-name: Release manually triggered on branch "${{ github.ref_name }}"
 
 on:
   workflow_dispatch: # Manually triggered workflow
     inputs:
       level:
-        description: semantic version level to bump
+        description: Semantic version level to bump
         required: true
         default: patch
         type: choice
