@@ -63,7 +63,7 @@ jobs:
         run:  echo make docs-publish
 
       - name: Create changelog (release-only)
-        if: ${{ inputs.do-release == 'yes }}
+        if: ${{ inputs.do-release == 'yes' }}
         run: echo make update-changelog
 
       - name: Create tarball
