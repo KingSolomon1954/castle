@@ -40,33 +40,12 @@ jobs:
         
       - name: lookee lookee
         run: |
-          echo "event name: ${{ github.event_name }}"
-          echo "action: ${{ github.action }}"
+          echo "github.event name: ${{ github.event_name }}"
+          echo "github.action: ${{ github.action }}"
+          echo "github workflow: ${{ github.workflow }}"
           echo "event commit msg: ${{ github.event.head_commit.message }}"
-          echo "event pull_request title: ${{ github.event.pull_request.title }}"
-          title="${{ github.event.pull_request.title }}"
-          if [ -z "$title" ]; then
-              echo "title is empty"
-          else
-              echo "title is $title"
-          fi
-          if [[ $title =~ ^"Release:" ]]; then
-              echo "starts with Release:"
-          else
-              echo "does NOT start with Release:"
-          fi
-          if ${{ github.event.pull_request.merged == true }}; then
-              echo "pull_request was merged"
-          else
-              echo "pull_request was NOT merged"
-          fi
-          echo "howie ${{ inputs.do-release }}"
-          if  ${{ inputs.do-release }}; then
-              echo "do-release is true"
-          else
-              echo "do-release is false"
-          fi
-          echo "howie ${{ github.workflow }}"
+          echo "inputs.do-release: ${{ inputs.do-release }}"
+          echo "inputs.release-level: ${{ inputs.release-level }}"
 
       - name: Run unit tests
         run:  |
@@ -75,8 +54,7 @@ jobs:
       - name: Bump version number (release-only)
         if: ${{ inputs.do-release }}
         run:  |
-          bump_level= ${{ steps.build_type.outputs.bump_level }}
-          echo make BUMP=$bump_level bump-version
+          echo make BUMP=${{ inputs.release-level }} bump-version
 
       - name: Build docs
         run:  echo make docs
