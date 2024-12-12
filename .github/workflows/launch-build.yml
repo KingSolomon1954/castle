@@ -15,4 +15,5 @@ jobs:
     uses: ./.github/workflows/shared-build.yml
     with:
       do-release: false
+      release-level: none
     secrets: inherit  # Pass repository secrets to the shared workflow
